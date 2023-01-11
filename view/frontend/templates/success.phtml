@@ -1,0 +1,28 @@
+<?php
+/**
+ * @var \Spirit\BestpriceAnalytics\Block\Success $block
+ */
+?>
+<?php if ($block->getOrderId()): ?>
+    <!-- BESTPRICE ANALYTICS CODE start -->
+    <script type="text/javascript">
+      bp("addOrder", JSON.stringify({
+        orderId: '<?= /* @noEscape */ $block->getOrderId(); ?>',
+        revenue: '<?= /* @noEscape */ $block->getTotal(); ?>',
+        shipping: '<?= /* @noEscape */ $block->getShippingCost(); ?>',
+        tax: '<?= /* @noEscape */ $block->getTaxAmount(); ?>',
+        method: '<?= /* @noEscape */ $block->getPaymentMethodTitle(); ?>',
+        currency: '<?= /* @noEscape */ $block->getOrder()->getOrderCurrencyCode(); ?>',
+      }));
+      <?php foreach ($block->getItems() as $item): ?>
+        bp("addProduct", JSON.stringify({
+          orderId: "<?= /* @noEscape */ $block->getOrderId(); ?>",
+          productId: "<?= /* @noEscape */ $block->getProductId($item); ?>",
+          title: "<?= $block->escapeJs($item->getName()); ?>",
+          price: "<?= /* @noEscape */ $item->getPriceInclTax(); ?>",
+          quantity: "<?= /* @noEscape */ $item->getQtyOrdered(); ?>"
+        }));
+      <?php endforeach; ?>
+    </script>
+    <!-- BESTPRICE ANALYTICS CODE end -->
+<?php endif; ?>

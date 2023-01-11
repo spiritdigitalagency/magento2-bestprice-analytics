@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="spirit_bestprice"
+                 translate="label"
+                 type="text"
+                 sortOrder="100"
+                 showInDefault="1"
+                 showInWebsite="1"
+                 showInStore="1">
+            <label>BestPrice</label>
+            <tab>spirit</tab>
+            <resource>Spirit_BestpriceAnalytics::config</resource>
+            <group id="analytics" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>BestPrice Analytics 360</label>
+                <field id="status"
+                       translate="label"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="360_key"
+                       translate="label"
+                       type="text"
+                       sortOrder="20"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>BestPrice 360 Key</label>
+                    <validate>required-entry</validate>
+                    <comment>The 360 key is provided by BestPrice</comment>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="unique_id"
+                       translate="label"
+                       type="select"
+                       sortOrder="30"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Unique ID</label>
+                    <validate>required-entry</validate>
+                    <source_model>Spirit\BestpriceAnalytics\Model\Config\Source\UniqueId</source_model>
+                    <comment>Specify the Unique ID that should be send to analytics.</comment>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="variation_unique_id"
+                       translate="label"
+                       type="radios"
+                       sortOrder="40"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Variation Unique IDs</label>
+                    <source_model>Spirit\BestpriceAnalytics\Model\Config\Source\VariationUniqueId</source_model>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="badge" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>BestPrice Badge</label>
+                <field id="status"
+                       translate="label"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>BestPrice 360 Analytics should be enabled.</comment>
+                </field>
+                <field id="position"
+                       translate="label"
+                       type="select"
+                       sortOrder="20"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Position</label>
+                    <source_model>Spirit\BestpriceAnalytics\Model\Config\Source\BadgePosition</source_model>
+                    <comment>Specify the position of the badge.</comment>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="product_badge" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>BestPrice Product Badge</label>
+                <field id="status"
+                       translate="label"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>BestPrice 360 Analytics should be enabled.</comment>
+                </field>
+            </group>
+            <group id="widget" translate="label" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>BestPrice Product Widget</label>
+                <field id="status"
+                       translate="label"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>BestPrice 360 Analytics should be enabled.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

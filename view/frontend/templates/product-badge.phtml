@@ -1,0 +1,14 @@
+<?php
+/**
+ * @var $block Magento\Catalog\Block\Product\View
+ * @var $_helper Spirit\BestpriceAnalytics\ViewModel\Config
+ */
+$_product = $block->getProduct();
+$_helper  = $block->getData('config');
+if (! empty($_helper->getReviewTheme())): ?>
+    <div id="bestprice-product-reviews-<?= $block->escapeHtml($_helper->getReviewTheme()); ?>"
+         >
+    </div>
+    <script data-mid="10906" data-pid="<?= $block->escapeHtml($_product->getSku()); ?>"
+            src="https://scripts.bestprice.gr/pbadge.js" async="true"></script><noscript><a href="https://www.bestprice.gr">BestPrice.gr</a></noscript>
+<?php endif; ?>
